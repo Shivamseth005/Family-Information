@@ -23,16 +23,16 @@ class MenuBar:
         self.new_window = tk.Tk()
         self.new_window.title("View All Members using TreeView")
         self.table = TableFactory.createTable(TableTypeEnums.UsingTreeView, self.new_window)
-        self.table.loadAllDataInTable(0)
+        self.table.loadAllDataInTable('0')
     
     def AllMembersWidgets(self):
         print("AllMembersWidgets called")
         self.new_window = tk.Tk()
         self.new_window.title("View All Members using Widgets")
         self.table = TableFactory.createTable(TableTypeEnums.UsingWidget, self.new_window)
-        self.table.loadAllDataInTable(0)
+        self.table.loadAllDataInTable('0')
 
-    def generateTable(self, memberId = 0):
+    def generateTable(self, memberId = '0'):
         if memberId == 0:
             self.table.loadAllDataInTable(memberId)
         else:

@@ -29,11 +29,11 @@ class MainForm(tk.Tk):
         self.create_TextBoxes()
         self.create_Buttons()
 
-        # self.table = TableFactory.createTable(TableTypeEnums.UsingTreeView, self.baseFrame)
-        # self.table = TableFactory.createTable(TableTypeEnums.UsingWidget, self.baseFrame)
         self.create_ComboBoxes()
-        # self.create_table()
         self.config(menu=self.menubar.menubar)
+
+        self.table = None
+
         style = ttk.Style()
         style.theme_use('clam')
 
@@ -68,7 +68,7 @@ class MainForm(tk.Tk):
             self.unameTxt['state'] = tk.DISABLED
         else:
             self.unameTxt['state'] = tk.NORMAL
-        print(self.unameTxt['state'])
+        # print(self.unameTxt['state'])
 
 
     def create_Buttons(self):
@@ -102,12 +102,11 @@ class MainForm(tk.Tk):
         else:
             self.membersList['values'] = ['Select Member Name']
         for memberInfo in memberMetaData:
-            print(memberInfo)
-            print(memberMetaData[memberInfo]['MemberName'])
             self.membersList["values"] = tuple(list(self.membersList['values']) + [memberMetaData[memberInfo]['MemberName']])
         self.membersList.current(0)
         self.membersList.grid(row=1, columnspan=4, ipadx=25, ipady=5)
         self.membersList['state'] = "readonly"
+        self.membersList.bind('<<ComboboxSelected>>', self.CheckSelectedMember)
     
     
     def check_for_selection(self):
@@ -149,13 +148,16 @@ class MainForm(tk.Tk):
         self.after(100, self.check_for_selection)
 
 
-    def CheckSelectedMember(self):
+    def CheckSelectedMember(self, event=None):
         value = self.membersList.get()
 
-        if value not in ['No Member Added', 'Select Member Name']:
+        if value == 'No Member Added':
+            pass
+        elif value == 'Select Member Name':
+            if self.table is not None:
+                self.table.clearTable()
+        else:
             self.table = TableFactory.createTable(TableTypeEnums.UsingTreeView, self.baseFrame)
-            self.table.loadAllDataInTable(0)
+            self.table.loadSpecificFamiltyDataInTable(str(self.membersList.current()-1))
 
-        # Call this method again to keep checking the selection box
-        self.after(100, self.CheckSelectedMember)
 

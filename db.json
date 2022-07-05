@@ -9,18 +9,42 @@
     },
     "1":{
         "MemberName": "Child-1",
-        "NicName":"",
-        "place": "",
+        "NicName":"C1",
+        "place": "Place1",
         "spouceName": "",
         "parentId": "0",
-        "children": []
+        "children": ["3", "4"]
     },
     "2":{
         "MemberName": "Child-2",
-        "NicName":"",
-        "place": "",
+        "NicName":"C2",
+        "place": "Place1",
         "spouceName": "",
         "parentId": "0",
+        "children": ["5"]
+    },
+    "3":{
+        "MemberName": "Child-1-1",
+        "NicName":"C11",
+        "place": "Place2",
+        "spouceName": "",
+        "parentId": "1",
+        "children": []
+    },
+    "4":{
+        "MemberName": "Child-1-2",
+        "NicName":"C12",
+        "place": "Place3",
+        "spouceName": "",
+        "parentId": "1",
+        "children": []
+    },
+    "5":{
+        "MemberName": "Child-2-1",
+        "NicName":"C21",
+        "place": "Place2",
+        "spouceName": "",
+        "parentId": "2",
         "children": []
     }
     
