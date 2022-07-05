@@ -1,0 +1,27 @@
+{
+    "0":{
+        "MemberName": "Root",
+        "NicName":"NIC",
+        "place": "VIRTUAL",
+        "spouceName": "NO",
+        "parentId": "-1",
+        "children": ["1", "2"]
+    },
+    "1":{
+        "MemberName": "Child-1",
+        "NicName":"",
+        "place": "",
+        "spouceName": "",
+        "parentId": "0",
+        "children": []
+    },
+    "2":{
+        "MemberName": "Child-2",
+        "NicName":"",
+        "place": "",
+        "spouceName": "",
+        "parentId": "0",
+        "children": []
+    }
+    
+}
